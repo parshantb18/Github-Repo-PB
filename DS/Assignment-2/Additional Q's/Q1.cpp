@@ -24,4 +24,6 @@ int main(){
 
     cout<<"There are "<<count<<" pair(s)"<<endl;
 
+    return 0;
+
 }
