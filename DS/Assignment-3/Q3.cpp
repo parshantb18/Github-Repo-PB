@@ -1,44 +1,71 @@
 /*Write a program that checks if an expression has balanced parentheses.*/
 #include <iostream>
-#include <stack>
 using namespace std;
 
-bool isBalanced(string expr)
-{
-    stack<char> s;
+class Stack {
+private:
+    char arr[100]; 
+    int topIndex;
 
-    for (char ch : expr)
-    {
-        // If opening bracket → push into stack
-        if (ch == '(' || ch == '{' || ch == '[')
-        {
+public:
+    Stack() {
+        topIndex = -1;
+    }
+
+    void push(char c) {
+        if (topIndex < 99) {
+            arr[++topIndex] = c;
+        } else {
+            cout << "Stack Overflow!" << endl;
+        }
+    }
+
+    void pop() {
+        if (topIndex >= 0) {
+            topIndex--;
+        } else {
+            cout << "Stack Underflow!" << endl;
+        }
+    }
+
+    char top() {
+        if (topIndex >= 0) {
+            return arr[topIndex];
+        }
+        return '\0';
+    }
+
+    bool empty() {
+        return topIndex == -1;
+    }
+};
+
+bool isBalanced(string expr) {
+    Stack s;
+
+    for (char ch : expr) {
+        if (ch == '(' || ch == '{' || ch == '[') {
             s.push(ch);
         }
-        // If closing bracket → check stack
-        else if (ch == ')' || ch == '}' || ch == ']')
-        {
+        else if (ch == ')' || ch == '}' || ch == ']') {
             if (s.empty())
-                return false; // no matching opening
+                return false;
 
-            char top = s.top();
+            char topChar = s.top();
             s.pop();
 
-            // Matching check
-            if ((ch == ')' && top != '(') ||
-                (ch == '}' && top != '{') ||
-                (ch == ']' && top != '['))
-            {
+            if ((ch == ')' && topChar != '(') ||
+                (ch == '}' && topChar != '{') ||
+                (ch == ']' && topChar != '[')) {
                 return false;
             }
         }
     }
 
-    // If stack is empty → balanced
     return s.empty();
 }
 
-int main()
-{
+int main() {
     string expr;
     cout << "Enter an expression: ";
     cin >> expr;
