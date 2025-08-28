@@ -1,22 +1,49 @@
 /*Given a string, reverse it using STACK. For example “DataStructure” should be output as 
 “erutcurtSataD.” */
 #include <iostream>
-#include <stack>
 using namespace std;
 
-int main()
-{
-    string str = "DataStructure";
-    stack<char> s;
+class Stack {
+private:
+    char arr[100];
+    int topIndex;
+public:
+    Stack() {
+        topIndex = -1;
+    }
+    void push(char ch) {
+        if (topIndex < 99) {
+            arr[++topIndex] = ch;
+        } else {
+            cout << "Stack Overflow!" << endl;
+        }
+    }
+    void pop() {
+        if (topIndex >= 0) {
+            topIndex--;
+        } else {
+            cout << "Stack Underflow!" << endl;
+        }
+    }
+    char top() {
+        if (topIndex >= 0) {
+            return arr[topIndex];
+        }
+        return '\0';
+    }
+    bool empty() {
+        return (topIndex == -1);
+    }
+};
 
-    for (char ch : str)
-    {
+int main() {
+    string str = "DataStructure";
+    Stack s;
+    for (char ch : str) {
         s.push(ch);
     }
-
     string reversed = "";
-    while (!s.empty())
-    {
+    while (!s.empty()) {
         reversed += s.top();
         s.pop();
     }
