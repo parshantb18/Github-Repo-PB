@@ -24,8 +24,10 @@ bool Anagram(string str1, string str2) {
         cout<<"Both strings are unequal in length."<<endl;
     }
 
+    else{
     bubbleSort(str1);
     bubbleSort(str2);
+    }
 
     for (int i = 0; i < str1.length(); i++) {
         if (str1[i] != str2[i]){
