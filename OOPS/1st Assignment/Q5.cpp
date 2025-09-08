@@ -1,5 +1,5 @@
-/*Differentiate between private and public access/scope. Perform the question no. 4 
-with class instead of structure with having the data members private and some 
+/*Differentiate between private and public access/scope. Perform the question no. 4
+with class instead of structure with having the data members private and some
 member functions in private scope and some in public scope. */
 
 /*  PRIVATE ACCESS:-
@@ -13,13 +13,12 @@ member functions in private scope and some in public scope. */
   -Used for outside interaction
   -Default access level for structures.*/
 
-
-
 #include <iostream>
 #include <string>
 using namespace std;
 
-class Student {
+class Student
+{
 private:
     string name;
     int rollNo;
@@ -27,7 +26,8 @@ private:
     string hostel;
     float currentCGPA;
 
-    void inputBasicDetails() {
+    void inputBasicDetails()
+    {
         cout << "Enter Name: ";
         cin >> name;
         cout << "Enter Roll No: ";
@@ -39,28 +39,33 @@ private:
     }
 
 public:
-    void addDetails() {
+    void addDetails()
+    {
         inputBasicDetails();
         cout << "Enter Current CGPA: ";
         cin >> currentCGPA;
     }
 
-    void updateDetails() {
+    void updateDetails()
+    {
         cout << "\nUpdating Student Details...\n";
         inputBasicDetails();
     }
 
-    void updateCGPA() {
+    void updateCGPA()
+    {
         cout << "Enter New CGPA: ";
         cin >> currentCGPA;
     }
 
-    void updateHostel() {
+    void updateHostel()
+    {
         cout << "Enter New Hostel: ";
         cin >> hostel;
     }
 
-    void displayDetails() {
+    void displayDetails()
+    {
         cout << "\n--- Student Details ---\n";
         cout << "Name: " << name << endl;
         cout << "Roll No: " << rollNo << endl;
@@ -70,7 +75,8 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     Student s;
     s.addDetails();
     s.updateDetails();
