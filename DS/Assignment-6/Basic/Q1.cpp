@@ -8,7 +8,7 @@ deleted may appear as a head node, last node or a node in between.
 #include <iostream>
 using namespace std;
 
-// -------------------- DOUBLY LINKED LIST --------------------
+//-------------------- DOUBLY LINKED LIST --------------------
 class DoublyLinkedList
 {
     struct Node

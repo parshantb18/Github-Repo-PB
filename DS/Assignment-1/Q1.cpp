@@ -1,79 +1,94 @@
-/*Q1) Develop a Menu driven program to demonstrate the following operations of Arrays 
-——MENU——- 
-1.CREATE 
-2. DISPLAY 
-3. INSERT 
-4. DELETE 
-5. LINEAR SEARCH 
+/*Q1) Develop a Menu driven program to demonstrate the following operations of Arrays
+——MENU——-
+1. CREATE
+2. DISPLAY
+3. INSERT
+4. DELETE
+5. LINEAR SEARCH
 6. EXIT*/
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int arr[100];
-int n,i;
+int n, i;
 
-void createarray(){
-   cout<<"Enter no. of elements(should not be zero):"<<endl;
-   cin>>n;
-   cout<<"Enter the elements:\n"<<endl;
-   for(i=0;i<n;i++){
-    cin>>arr[i];
-   }
-   cout<<"Your Array has been created"<<endl;
-}
-
-void displayarray(){
-    cout<<"Your created array is as follows:"<<endl;
-    for(i=0;i<n;i++){
-        cout<<arr[i]<< " ";
+void createarray()
+{
+    cout << "Enter no. of elements(should not be zero):" << endl;
+    cin >> n;
+    cout << "Enter the elements:\n"
+         << endl;
+    for (i = 0; i < n; i++)
+    {
+        cin >> arr[i];
     }
-    cout<<endl;
+    cout << "Your Array has been created" << endl;
 }
 
-void insertelement(){
+void displayarray()
+{
+    cout << "Your created array is as follows:" << endl;
+    for (i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void insertelement()
+{
     int position, element;
-    cout<<"Enter the position where you want to insert your element:";
-    cin>> position;
-    cout<< "Enter value of element:";
-    cin>> element;
-    for(int i=n;i>=position;i--){
-        arr[i]=arr[i-1];
+    cout << "Enter the position where you want to insert your element:";
+    cin >> position;
+    cout << "Enter value of element:";
+    cin >> element;
+    for (int i = n; i >= position; i--)
+    {
+        arr[i] = arr[i - 1];
     }
-    arr[position-1] =element;
+    arr[position - 1] = element;
     n++;
-    cout<< "Element inserted\n";
+    cout << "Element inserted\n";
 }
 
-void deleteelement(){
+void deleteelement()
+{
     int position;
-    cout <<"Enter the position of the element you want to delete:";
-    cin>>position;
-    for(int i=position-1;i<n-1;i++) {
-        arr[i]=arr[i+1];
+    cout << "Enter the position of the element you want to delete:";
+    cin >> position;
+    for (int i = position - 1; i < n - 1; i++)
+    {
+        arr[i] = arr[i + 1];
     }
     n--;
-    cout<<"Element deleted\n";
+    cout << "Element deleted\n";
 }
 
-void linearsearch(){
-    int value,found=0;
-    cout<<"Enter value to search:";
-    cin>>value;
-    for(int i=0;i<n;i++){
-        if(arr[i]==value){
-            cout<<"Element found at position"<<" "<<i+1<<"\n";
-            found=1;
+void linearsearch()
+{
+    int value, found = 0;
+    cout << "Enter value to search:";
+    cin >> value;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == value)
+        {
+            cout << "Element found at position" << " " << i + 1 << "\n";
+            found = 1;
         }
     }
-    if(found!=1){
+    if (found != 1)
+    {
         cout << "Element was not found\n";
     }
 }
 
-int main(){
+int main()
+{
     int choice;
-    do{
+    do
+    {
         cout << "\n MENU \n";
         cout << "1. CREATE\n";
         cout << "2. DISPLAY\n";
@@ -84,17 +99,30 @@ int main(){
         cout << "Enter your choice: ";
         cin >> choice;
 
-        switch (choice) {
-        case 1: createarray(); break;
-        case 2: displayarray(); break;
-        case 3: insertelement(); break;
-        case 4: deleteelement(); break;
-        case 5: linearsearch(); break;
-        case 6: cout << "Exiting program...\n"; break;
-        default: cout << "Invalid choice! Try again.\n";
+        switch (choice)
+        {
+        case 1:
+            createarray();
+            break;
+        case 2:
+            displayarray();
+            break;
+        case 3:
+            insertelement();
+            break;
+        case 4:
+            deleteelement();
+            break;
+        case 5:
+            linearsearch();
+            break;
+        case 6:
+            cout << "Exiting program...\n";
+            break;
+        default:
+            cout << "Invalid choice! Try again.\n";
         }
     } while (choice != 6);
 
     return 0;
 }
-
